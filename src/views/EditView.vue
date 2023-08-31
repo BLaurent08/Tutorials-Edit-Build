@@ -97,7 +97,7 @@ export default {
                     )
                     // localStorage.setItem("tutorials", JSON.stringify(this.tutorials));
                     // this.$router.push("/tutorial");
-                    axios.delete( this.dbLink + "/" + this.index).then((response) => {
+                    axios.delete( this.dbLink + this.index).then((response) => {
                         this.$router.push("/tutorial");
                     }).catch((error) => {
                         console.log(error);
