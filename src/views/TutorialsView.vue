@@ -72,7 +72,7 @@ export default {
                         'Your tutorial has been deleted.',
                         'success'
                     )
-                    axios.delete( this.dbLink + "/" + index).then((response) => {
+                    axios.delete( this.dbLink + index).then((response) => {
                         this.readTutorials();
                     }).catch((error) => {
                         console.log(error);
