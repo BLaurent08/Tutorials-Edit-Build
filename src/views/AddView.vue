@@ -58,12 +58,12 @@ export default {
                 });
             }
             if (this.tutorials.some(t => t.tutorialTitle == this.tutorial.tutorialTitle)) {
+                this.tutorialTitle = "";
                 return this.$swal({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Tutorial already exists!',
                 });
-                this.tutorialTitle = "";
             }
             else {
                 axios.post(this.dbLink, this.tutorial).then((response) => {
