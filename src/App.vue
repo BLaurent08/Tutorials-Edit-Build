@@ -24,7 +24,8 @@ export default {
 
 <template>
   <header class="mx-0 p-0 mb-2">
-    <nav class="navbar navbar-expand-lg bg-opaque" :class="['navbar', { 'taller': title !== 'Home' }]" data-bs-theme='dark'>
+    <nav class="navbar navbar-expand-lg bg-opaque" :class="['navbar', { 'taller': title !== 'Home' }]"
+      data-bs-theme='dark'>
       <div class="container-fluid">
         <RouterLink class="navbar-brand popper-text-dark fs-1 fw-bold text-white mb-0 pb-0 popper-link" to="/">Tutorials
           Co.<span class="fs-3 ps-2 fw-semibold">{{ title }}</span></RouterLink>
@@ -112,4 +113,5 @@ export default {
     max-height: 6.5rem;
     height: auto;
   }
-} </style>
+}
+</style>
