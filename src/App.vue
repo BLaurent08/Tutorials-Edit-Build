@@ -68,7 +68,7 @@ export default {
 
 .box {
   position: absolute;
-  top: 5rem;
+  top: 7rem;
   left: 50%;
   width: 40rem;
   transform: translate(-50%);
@@ -98,7 +98,7 @@ export default {
     backdrop-filter: blur(.5rem);
   }
 
-  .navbar-collapse:active {
+  .navbar-collapse {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)) !important;
     z-index: 1000;
     border-radius: 1rem;
