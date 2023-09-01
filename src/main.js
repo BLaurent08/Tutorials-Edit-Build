@@ -19,6 +19,6 @@ const options = {
 app.use(VueSweetalert2, options)
 app.use(router)
 
-app.config.globalProperties.$baseURL = 'https://vercel.com/blaurent08/tutorials-api/DXUDjengqQbb5i5wdAVQTTpTCxML'
+app.config.globalProperties.$baseURL = 'https://tutorials-api-zeta.vercel.app/'
 
 app.mount('#app')
