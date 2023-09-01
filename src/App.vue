@@ -112,4 +112,4 @@ export default {
     max-height: 6.5rem;
     height: auto;
   }
-}</style>
+} </style>
