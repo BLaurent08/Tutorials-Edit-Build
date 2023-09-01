@@ -24,7 +24,7 @@ export default {
 
 <template>
   <header class="mx-0 p-0 mb-2">
-    <nav class="navbar navbar-expand-lg bg-opaque" data-bs-theme='dark'>
+    <nav class="navbar navbar-expand-lg bg-opaque" :class="['navbar', { 'taller': title !== 'Home' }]" data-bs-theme='dark'>
       <div class="container-fluid">
         <RouterLink class="navbar-brand popper-text-dark fs-1 fw-bold text-white mb-0 pb-0 popper-link" to="/">Tutorials
           Co.<span class="fs-3 ps-2 fw-semibold">{{ title }}</span></RouterLink>
@@ -33,7 +33,7 @@ export default {
           <span class="navbar-toggler-icon popper-dark"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav gap-sm-4">
+          <div class="navbar-nav gap-sm-4 ps-3">
             <RouterLink class="nav-link fs-4 popper-text-dark fw-semibold text-white popper-link rounded-4" to="/">Home
             </RouterLink>
             <RouterLink class="nav-link fs-4 popper-text-dark fw-semibold text-white popper-link rounded-4" to="/add">Add
