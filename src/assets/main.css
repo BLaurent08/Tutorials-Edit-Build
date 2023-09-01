@@ -23,10 +23,12 @@ td .btn {
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 #canvas {
   position: fixed;
+  min-height: 800px;
 }
 
 #footer .btn:hover, .hover:hover, .dropdown-item:hover {
