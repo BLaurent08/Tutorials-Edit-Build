@@ -121,7 +121,6 @@ export default {
                         'Your tutorials have been deleted.',
                         'success'
                     )
-
                 }
             })
         },
