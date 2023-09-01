@@ -61,7 +61,6 @@ export default {
 <style scoped>
 .bg-opaque {
   background-color: rgba(18, 39, 20, 0.3);
-  /* blurs the background */
   backdrop-filter: blur(.2rem);
   z-index: 1000;
 }
@@ -99,7 +98,8 @@ export default {
   }
 
   .navbar-collapse {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)) !important;
+    background-color: rgba(18, 39, 20, 0.3);
+    backdrop-filter: blur(.2rem);
     z-index: 1000;
     border-radius: 1rem;
   }
