@@ -17,10 +17,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-if="tutorials.length < 1">
-                <td colspan="4" class="text-center">No tutorials found.</td>
+            <tr v-show="isLoading">
+                <td colspan="4" class="text-center">
+                    <ion-icon name="refresh"></ion-icon>
+                    Loading...
+                </td>
             </tr>
-            <tr v-for="(tutorial, index) in tutorials" :key="index">
+            <tr v-for="(tutorial, index) in tutorials" :key="index" v-if="tutorials.length > 0 && !isLoading">
                 <td class="text-center pt-3">{{ tutorial.tutorialTitle }}</td>
                 <td class="text-center">{{ tutorial.description }}</td>
                 <td class="text-center pt-3">{{ tutorial.published ? "Published" : "Pending" }}</td>
@@ -29,13 +32,17 @@
                     <button class="btn btn-sm btn-outline-warning p-0 popper-lite" @click="deleteTutorial(tutorial.tutorialid)">Delete</button>
                 </td>
             </tr>
+            <tr v-if="tutorials.length < 1 && !isLoading">
+                <td colspan="4" class="text-center">No tutorials found.</td>
+            </tr>
         </tbody>
         <tfoot>
-            <tr v-if="tutorials.length > 0">
+
+            <tr v-if="tutorials.length > 0 && !isLoading">
                 <td colspan="4" class="text-center border border-0"><button @click="removeAll()" class="btn btn-outline-danger popper-lite">Remove All
                         Tutorials</button></td>
             </tr>
-            <tr v-else>
+            <tr v-else v-show="!isLoading">
                 <td colspan="4" class="text-center border border-0">
                     <RouterLink class="btn btn-outline-success popper-lite" to="/add">Click Here to Add Some</RouterLink>
                 </td>
@@ -51,7 +58,8 @@ export default {
         return {
             search: "",
             tutorials: [],
-            dbLink: this.$baseURL
+            dbLink: this.$baseURL,
+            isLoading: true
         }
     },
     methods: {
@@ -72,7 +80,7 @@ export default {
                         'Your tutorial has been deleted.',
                         'success'
                     )
-                    axios.delete( this.dbLink + index).then((response) => {
+                    axios.delete(this.dbLink + index).then((response) => {
                         this.readTutorials();
                     }).catch((error) => {
                         console.log(error);
@@ -111,10 +119,10 @@ export default {
                 confirmButtonText: 'Yes, delete them all!'
             }).then((result) => {
                 axios.delete(this.dbLink).then((response) => {
-                        this.readTutorials();
-                    }).catch((error) => {
-                        console.log(error);
-                    });
+                    this.readTutorials();
+                }).catch((error) => {
+                    console.log(error);
+                });
                 if (result.isConfirmed) {
                     this.$swal(
                         'Deleted!',
@@ -133,7 +141,28 @@ export default {
         }
     },
     mounted() {
+        axios.get(this.dbLink).then((response) => {
+            this.tutorials = response.data;
+            this.isLoading = false; // Set isLoading to false after data is loaded
+        }).catch((error) => {
+            console.log(error);
+        });
         this.readTutorials();
     }
 }
 </script>
+
+<style>
+    ion-icon {
+        animation: rotate 1s linear infinite;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
